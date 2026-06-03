@@ -1,0 +1,18 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int flag=0;
+        String a = sc.nextLine();
+        
+        for(int i=0;i<a.length();i++){
+            char ch=a.charAt(i);
+            if(ch>='a'||ch<='z'){
+                flag=flag|(1<<ch-'a');
+            }
+            
+            
+        }
+        System.out.println((flag==(1<<26)-1)?"YES":"NO");
+    }
+}
