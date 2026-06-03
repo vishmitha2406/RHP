@@ -1,0 +1,24 @@
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String a = sc.nextLine();
+        int b = a.length();
+
+        for (int i = 0; i < (1 << b); i++) {
+
+            String combi = "";
+
+            for (int j = 0; j < b; j++) {
+
+                if ((i & (1 << j)) > 0) {
+                    combi += a.charAt(j);
+                }
+            }
+
+            System.out.println(combi);
+        }
+    }
+}
