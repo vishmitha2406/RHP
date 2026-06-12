@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class Main {
+    static final int N = 200005;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int q = sc.nextInt();
+
+        int[] f = new int[N];
+
+        while (n-- > 0) {
+            int l = sc.nextInt();
+            int r = sc.nextInt();
+
+            f[l]++;
+            if (r + 1 < N) {
+                f[r + 1]--;
+            }
+        }
+
+        int cnt = 0;
+        for (int i = 0; i < N; i++) {
+            cnt += f[i];
+            f[i] = (cnt >= k) ? 1 : 0;
+        }
+
+        int[] p = new int[N];
+        for (int i = 1; i < N; i++) {
+            p[i] = p[i - 1] + f[i - 1];
+        }
+
+        while (q-- > 0) {
+            int l = sc.nextInt();
+            int r = sc.nextInt();
+
+            System.out.println(p[r + 1] - p[l]);
+        }
+
+        sc.close();
+    }
+}
